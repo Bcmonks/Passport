@@ -7,10 +7,15 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
 
+var mongojs = require('mongojs');
+var db = mongojs('users', ['users']);
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
+var ejs = require('ejs')
+  , fs = require('fs');
+var router = express.Router();
 
 var configDB = require('./config/database.js');
 
@@ -37,7 +42,16 @@ require('./app/routes.js')(app, passport); // load our routes and pass in our ap
 
 // brackets ====================================================================
 
-app.post('/contactlist', function (req, res) {
+
+function buttonAction1(res){
+  res.send('ok');
+}
+
+router.get("/test1", function (req, res) {
+  buttonAction1(res);
+})
+/*
+app.post('/Passport/brackets', function (req, res) {
   console.log(req.body);
   db.contactlist.insert(req.body, function(err, doc) {
     res.json(doc);
@@ -45,7 +59,7 @@ app.post('/contactlist', function (req, res) {
 });
 
 
-app.delete('/contactlist/:id', function (req, res) {
+app.delete('/Passport/brackets/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
   db.contactlist.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
@@ -53,14 +67,14 @@ app.delete('/contactlist/:id', function (req, res) {
   });
 });
 
-app.get('/contactlist/:id', function (req, res) {
+app.get('/Passport/brackets/:id', function (req, res) {
   var id = req.params.id;
   console.log(id);
   db.contactlist.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
     res.json(doc);
   });
 });
-
+*/
 
 // launch ======================================================================
 app.listen(port);

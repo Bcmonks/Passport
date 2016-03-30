@@ -1,4 +1,5 @@
 // app/routes.js
+//var brackets = require("../views/brackets.js");
 module.exports = function(app, passport) {
 
     // =====================================
@@ -74,10 +75,12 @@ module.exports = function(app, passport) {
     // CONTROLLERS =========================
     // =====================================
     app.get('/dascontrollers/mycontroller.js', function(req, res) {
-        res.use('mycontroller.js', {
-                    user: req.user
-        });
+        //res.require('mycontroller.js', {
+        //            user: req.user
+        //});
     });
+
+    //app.post('/dascontrollers/mycontroller.js')
 
 
 };
